@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SwasthyaChain</title>
+    <title>Medicon</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -97,6 +97,10 @@
         .nav-height {
             height: 80px;
             padding-top: 15px;
+        }
+
+        .pre-img {
+            max-width: 800px;
         }
     </style>
 
@@ -287,7 +291,7 @@
                     if (!error) {
 
                         $.get("http://localhost:8081/ipfs/" + result, function (data) {
-                            patientRecord = data;
+                            patientRecord = data.slice(0, data.indexOf("Prescription"));
 
                             content = `<div class="tab-content">
                         <div id="view${patientAddress}">
@@ -415,7 +419,7 @@
 Diagnosis Time : ${getDateTime()}
 Diagnosis : ${diagnosed}
 Comments : ${comments}
-Prescription: ${base64data}
+<img class="pre-img" src="${base64data}">
 
 
         
