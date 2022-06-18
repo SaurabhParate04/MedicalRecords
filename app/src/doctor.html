@@ -273,8 +273,20 @@
                                                     </div>
                                                 </div>    
                                             </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group col-sm-10">
+                                                <div class="row">
+                                                    <div class="col-sm-2">
+                                                        <label class="control-label" for="details">Prescription:</label>
+                                                    </div>
+                                                    <div class="col-sm-10">
+                                                        <input type="file" name="Prescription" id="prescription">
+                                                    </div>
+                                                </div>    
+                                            </div>
                                             <div class="form-group col-sm-2">
-                                                <button class="btn btn-primary" onclick = "submitDiagnosis(this,`+ index + `)">Submit</button>
+                                                <button class="btn btn-primary" onclick = "submitDiagnosis(this,`+index+`)">Submit</button>
                                             </div>
                                         </div>
                                     </div>
@@ -333,48 +345,60 @@
             diagnosis = parseInt(diagnosis);
             var diagnosed = ailmentsDict[diagnosis];
             var comments = document.getElementById("details").value;
+            var prescription = document.getElementById("prescription").files[0];
 
-            var oldRecords = $("#records" + patientAddress).html();
+            var reader = new FileReader();
+            reader.readAsDataURL(prescription);
+            reader.onload = function () {
+                var base64data = reader.result;
 
-            var newRecords =
-                `Diagnosed By : ${docName}
+                var oldRecords = $("#records" + patientAddress).html();
+
+                var newRecords =
+                    `Diagnosed By : ${docName}
 Diagnosis Time : ${getDateTime()}
 Diagnosis : ${diagnosed}
 Comments : ${comments}
+Prescription: ${base64data}
+
 
         
 `
 
-            var updatedRecords = oldRecords + newRecords;
+                var updatedRecords = oldRecords + newRecords;
 
-            if (!isNaN(diagnosis)) {
+                if (!isNaN(diagnosis)) {
 
-                var buffer = Buffer(updatedRecords);
+                    var buffer = Buffer(updatedRecords);
 
-                ipfs.files.add(buffer, (error, result) => {
-                    if (error) {
-                        console.log(error)
-                    } else {
-                        ipfshash = result[0].hash;
-                        contractInstance.insurance_claim(patientAddress, diagnosis, ipfshash, { gas: 1000000 }, function (error, result) {
-                            if (!error) {
-                                alert("Your diagnosis has been submitted.");
-                                // delete content row
-                                table.deleteRow(index + 1);
+                    ipfs.files.add(buffer, (error, result) => {
+                        if (error) {
+                            console.log(error)
+                        } else {
+                            ipfshash = result[0].hash;
+                            contractInstance.insurance_claim(patientAddress, diagnosis, ipfshash, { gas: 1000000 }, function (error, result) {
+                                if (!error) {
+                                    alert("Your diagnosis has been submitted.");
+                                    // delete content row
+                                    table.deleteRow(index + 1);
 
-                                // delete main row of corresponding content row
-                                table.deleteRow(index);
-                            } else {
-                                $(".alert-danger").show();
-                                console.log(error);
-                            }
-                        })
-                    }
-                });
+                                    // delete main row of corresponding content row
+                                    table.deleteRow(index);
+                                } else {
+                                    $(".alert-danger").show();
+                                    console.log(error);
+                                }
+                            })
+                        }
+                    });
 
+                }
+                else {
+                    alert("Select a diagnosis");
+                }
             }
-            else {
-                alert("Select a diagnosis");
+            reader.onerror = function (error) {
+                console.log('Error: ', error);
             }
         }
     </script>

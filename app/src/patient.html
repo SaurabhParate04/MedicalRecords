@@ -124,19 +124,22 @@
                             </table>
                             
                             <div class="text-center">
-                                    <h5>Your records are stored here: http://localhost:8080/ipfs/<span id="recordsHash"></span></h5>
+                                    <h5>Your records are stored here: http://localhost:8081/ipfs/<span id="recordsHash"></span></h5>
                                 <button type="submit" class="btn btn-info btn-lg" onclick="showRecords(this)">View medical records</button>
                                 
                             </div>
                             <pre id="records" style="margin-top: 20px;">
 
                             </pre>
+                            
                            
                         </div>
                     </div>
                        
                 </div>
+                <img id="prescriptionImg" style="margin-top: 20px;" width="800px" height="600px" src="https://www.thetechoutlook.com/wp-content/uploads/2022/06/Google-Doodle-honors-Romanian-physicist-Stefania-Maracineanu.jpg">
             </div>
+    
             
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -211,6 +214,7 @@
     $(window).load(function() {
         connect();
         $("#records").hide();
+        $("#prescriptionImg").hide();
         $(".alert-info").hide();
         $(".alert-danger").hide();
         key = web3.currentProvider.selectedAddress;
@@ -348,7 +352,16 @@
         if (toggleRecordsButton%2 == 0){
 
             $.get("http://localhost:8081/ipfs/"+recordHash, function(data){
-                $("#records").html(data);
+                var imgsrc = data.substr(data.indexOf("data:image/png;base64,"));
+                var presc = document.getElementById("prescriptionImg");
+                presc.src = imgsrc;
+
+                var slicedData = data.slice(0, data.indexOf("Prescription"));
+                // console.log(slicedData);
+
+                // console.log(imgsrc);
+                $("#prescriptionImg").show();
+                $("#records").html(slicedData);
                 $("#records").show();
             })
 
@@ -358,6 +371,7 @@
             element.className = "btn btn-info btn-lg";
         } else{
             $("#records").hide();
+            $("#prescriptionImg").hide();
             toggleRecordsButton -=1;
             element.innerHTML = "View Medical Records";
             element.className = "btn btn-info btn-lg"
