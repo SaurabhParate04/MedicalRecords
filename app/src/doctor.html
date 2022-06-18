@@ -48,32 +48,86 @@
             color: #23527c;
             background-color: inherit;
         }
+
+        :root {
+            --primarycolor: #061551;
+            --secondarycolor: #36235f;
+            --tertiarycolor: #854dff;
+            --quaternarycolor: #061551;
+            --background-grey: #f2f7ff;
+        }
+
+        .primary-color {
+            background-color: var(--primarycolor);
+        }
+
+        .secondary-color {
+            background-color: var(--secondarycolor);
+        }
+
+        .tertiary-color {
+            background-color: var(--tertiarycolor);
+        }
+
+        .panel-heading {
+            margin-bottom: 20px;
+        }
+
+        .navbar {
+            margin-bottom: 70px;
+        }
+
+        .navbarBackground {
+            background-color: #061551;
+        }
+
+        .white {
+
+            color: white;
+        }
+
+        .white li>a {
+            color: white;
+        }
+
+        .bg-white {
+            background-color: white;
+        }
+
+        .nav-height {
+            height: 80px;
+            padding-top: 15px;
+        }
     </style>
 
 
 </head>
 
-<body>
+<body style="background-color:#f2f7ff ; height: 100%;">
 
     <!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+    <!-- Navigation -->
+    <nav class="navbar navbarBackground navbar-static-top nav-height" role="navigation">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse"
+                <button type="button" class="navbar-toggle white" data-toggle="collapse"
                     data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
+                    <span class="sr-only bg-light">Toggle navigation</span>
+                    <span class="icon-bar bg-light"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">SwasthyaChain</a>
+                <a class="navbar-brand white" href="./index.html">Medicon</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
+                    <li class="active white">
+                        <a class="white" href="./index.html">Login</a>
+                    </li>
                     <li>
-                        <a href="./index.html">Logout</a>
+                        <a class="white" href="./register.html">Register</a>
                     </li>
                 </ul>
             </div>
@@ -83,11 +137,12 @@
     </nav>
 
     <div class="container">
-        <div class="panel panel-default">
-            <div class="panel-heading">
+        <div class="panel panel-default" style="border-radius:0px ;">
+            <div class="panel-heading"
+                style="background-color: #061551; color: white; border-color: #061551; margin-bottom: 0px;">
                 <h3 class="text-center">Personal Information</h3>
             </div>
-            <div class="panel-body">
+            <div class="panel-body tertiary-color" style="padding-top: 30px; color: white;">
                 <div class="row">
                     <div class="col-sm-offset-1 col-sm-10">
                         <table class="table">
@@ -107,11 +162,12 @@
         </div>
 
 
-        <div class="panel panel-default">
-            <div class="panel-heading">
+        <div class="panel panel-default" style="border-radius:0px ;">
+            <div class="panel-heading"
+                style="background-color: #061551; color: white; border-color: #061551; margin-bottom: 0px;">
                 <h3 class="text-center">Accessible EMRs</h3>
             </div>
-            <div class="panel-body">
+            <div class="panel-body  tertiary-color " style="color:white ;">
                 <div class="row">
                     <div class="alert alert-danger col-sm-8 col-sm-offset-2">
                         <strong>Notice!</strong> Could not access records. Access might have been revoked. Contact admin
