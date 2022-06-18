@@ -15,224 +15,312 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <style>
-    .panel-heading{
-        margin-bottom: 20px;
-    }
-    .navbar{
-        margin-bottom: 70px;
-    }
+        .panel-heading {
+            margin-bottom: 20px;
+        }
+
+        .navbar {
+            margin-bottom: 70px;
+        }
+
+        .navbarBackground {
+            background-color: #061551;
+        }
+
+        .white {
+
+            color: white;
+        }
+
+        .white li>a {
+            color: white;
+        }
+
+        .bg-white {
+            background-color: white;
+        }
+
+        .nav-height {
+            height: 80px;
+            padding-top: 15px;
+        }
+
+
+        :root {
+            --primarycolor: #061551;
+            --secondarycolor: #36235f;
+            --tertiarycolor: #854dff;
+            --quaternarycolor: #061551;
+            --background-grey: #f2f7ff;
+        }
+
+        .primary-color {
+            background-color: var(--primarycolor);
+        }
+
+        .secondary-color {
+            background-color: var(--secondarycolor);
+        }
+
+        .tertiary-color {
+            background-color: var(--tertiarycolor);
+        }
+
+        form div input {
+            margin-left: 50px;
+        }
+
+        form div select {
+            margin-left: 50px;
+        }
     </style>
     <script src="/js/web3.min.js"></script>
 </head>
 
-<body>
+<body style="background-color:#f2f7ff ; height: 100%;">
 
-        <!-- Navigation -->
-        <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
-                <div class="container-fluid">
-                    <!-- Brand and toggle get grouped for better mobile display -->
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a class="navbar-brand" href="#">SwasthyaChain</a>
-                    </div>
-                    <!-- Collect the nav links, forms, and other content for toggling -->
-                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        <ul class="nav navbar-nav navbar-right">
-                            <li>
-                                <a href="./index.html">Login</a>
-                            </li>
-                            <li class="active">
-                                <a href="./register.html">Register</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- /.navbar-collapse -->
-                </div>
-                <!-- /.container -->
-            </nav>
-        
-        <div class="container">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                        <h3 class="text-center">Please enter your details to register.</h3>
-                </div>
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="alert alert-warning col-sm-8 col-sm-offset-2" style="display: none;">
-                            <strong>Warning!</strong> Invalid public key. Please enter a valid public key to register.
-                        </div>
-                                    
-                        <div class="alert alert-info col-sm-8 col-sm-offset-2" style="display: none;">
-                            <strong>Info!</strong> User already registered. Please check your details.
-                        </div>
-                    </div>
-                    
-                    <form name="registerForm" class="form-horizontal" action="./doctor.html">
-                        <div class="form-group">
-                            <label class="control-label col-sm-2" for="name">Name:</label>
-                            <div class="col-sm-8">
-                                <input type="text" class="form-control" id="name" placeholder="Enter name" name = "Name" required autofocus>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-sm-2" for="age">Age:</label>
-                            <div class="col-sm-8">
-                                <input type="age" class="form-control" id="age" placeholder="Enter age" name = "Age" required>
-                            </div>
-                        </div>
-                        <div class="form-group"> 
-                            <label for="designation" class="control-label col-sm-2">Registering as</label>
-                            <div class="col-sm-8">
-                                <select class="form-control" id="designation" required>
-                                    <option selected disabled>-- Please Select --</option>
-                                    <option value="0">Patient</option>
-                                    <option value="1">Doctor</option>
-                                </select>
-                            </div>
-                        </div>
+    <!--<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">SwasthyaChain</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="./index.html">Login</a>
+                    </li>
+                    <li class="active">
+                        <a href="./register.html">Register</a>
+                    </li>
+                </ul>
+            </div>
+           
+        </div>
+       
+    </nav>-->
 
-                    </form>
-                    <div class="text-center">
-                        <button class="btn btn-primary btn-lg" onclick="addAgent()">Register</button>
+
+    <!-- Navigation -->
+    <nav class="navbar navbarBackground navbar-static-top nav-height" role="navigation">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle white" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only bg-light">Toggle navigation</span>
+                    <span class="icon-bar bg-light"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand white" href="./index.html">Medicon</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="active white">
+                        <a class="white" href="./index.html">Login</a>
+                    </li>
+                    <li>
+                        <a class="white" href="./register.html">Register</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+
+
+    <div class="container" style="width: 500px;">
+        <div class="panel panel-default" style="border-radius:0px ;">
+            <div class="panel-heading"
+                style="background-color: #061551; color: white; border-color: #061551; margin-bottom: 0px;">
+                <h3 class="text-center">Please enter your details to register.</h3>
+            </div>
+            <div class="panel-body tertiary-color" style="padding-top: 30px;">
+                <div class="row">
+                    <div class="alert alert-warning col-sm-8 col-sm-offset-2" style="display: none;">
+                        <strong>Warning!</strong> Invalid public key. Please enter a valid public key to register.
                     </div>
+
+                    <div class="alert alert-info col-sm-8 col-sm-offset-2" style="display: none;">
+                        <strong>Info!</strong> User already registered. Please check your details.
+                    </div>
+                </div>
+
+                <form name="registerForm " style="color: white;" class="form-horizontal" action="./doctor.html">
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="name">Name:</label>
+                        <div class="col-sm-8">
+                            <input type="text" style="border-radius: 0px;" class="form-control" id="name"
+                                placeholder="Enter name" name="Name" required autofocus>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="age">Age:</label>
+                        <div class="col-sm-8">
+                            <input type="age" style="border-radius: 0px;" class="form-control" id="age"
+                                placeholder="Enter age" name="Age" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="designation" class="control-label col-sm-2">Registering as</label>
+                        <div class="col-sm-8" style="border-radius: 0px;">
+                            <select class="form-control" style="border-radius: 0px;" id="designation" required>
+                                <option style="border-radius: 0px;" selected disabled>-- Please Select --</option>
+                                <option style="border-radius: 0px;" value="0">Patient</option>
+                                <option style="border-radius: 0px;" value="1">Doctor</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </form>
+                <div class="text-center">
+                    <button class="btn btn-primary btn-lg"
+                        style="border-radius:0px; padding:10px 50px; background-color: #061551; border-color: #061551;"
+                        onclick="addAgent()">Register</button>
                 </div>
             </div>
-            
-            <hr>
-                
         </div>
-        
+
+        <hr>
+
+    </div>
 
 
-<script src="js/jquery.js"></script>
 
-<!-- Bootstrap Core JavaScript -->
-<script src="js/bootstrap.min.js"></script>
-<script src="js/app.js"></script>
-<script src="/js/web3.min.js"></script>
-<script src="https://unpkg.com/ipfs-api/dist/index.min.js" crossorigin="anonymous"></script>
+    <script src="js/jquery.js"></script>
 
-<script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="/js/web3.min.js"></script>
+    <script src="https://unpkg.com/ipfs-api/dist/index.min.js" crossorigin="anonymous"></script>
 
-    function addAgent(){
-        var ipfs = window.IpfsApi('localhost', '5001')
+    <script>
 
-        const Buffer = window.IpfsApi().Buffer;
+        function addAgent() {
+            var ipfs = window.IpfsApi('localhost', '5001')
 
-        name = $("#name").val();
-        age = $("#age").val();
+            const Buffer = window.IpfsApi().Buffer;
 
-        designation = $("#designation").val();
-        designation = parseInt(designation);
-        
-        publicKey = web3.currentProvider.selectedAddress;
-        publicKey = publicKey.toLowerCase();
-        console.log("PK:"+publicKey);
+            name = $("#name").val();
+            age = $("#age").val();
 
-        var validPublicKey = true;
-        var validAgent = true;
-        var PatientList = 0;
-        var DoctorList = 0;
-        var InsurerList = 0;
+            designation = $("#designation").val();
+            designation = parseInt(designation);
 
-        contractInstance.get_patient_list({gas: 1000000},function(error, result){
-            if(!error)
-                PatientList = result; 
-            else
-                console.error(error);
+            publicKey = web3.currentProvider.selectedAddress;
+            publicKey = publicKey.toLowerCase();
+            console.log("PK:" + publicKey);
+
+            var validPublicKey = true;
+            var validAgent = true;
+            var PatientList = 0;
+            var DoctorList = 0;
+            var InsurerList = 0;
+
+            contractInstance.get_patient_list({ gas: 1000000 }, function (error, result) {
+                if (!error)
+                    PatientList = result;
+                else
+                    console.error(error);
             });
 
-        contractInstance.get_doctor_list({gas: 1000000},function(error, result){
-            if(!error)
-                DoctorList = result;
-            else
-                console.error(error);
+            contractInstance.get_doctor_list({ gas: 1000000 }, function (error, result) {
+                if (!error)
+                    DoctorList = result;
+                else
+                    console.error(error);
             });
 
-        contractInstance.get_insurer_list({gas: 1000000},function(error, result){
-            if(!error)
-                InsurerList = result;
-            else
-                console.error(error);
+            contractInstance.get_insurer_list({ gas: 1000000 }, function (error, result) {
+                if (!error)
+                    InsurerList = result;
+                else
+                    console.error(error);
             });
 
-        if (validPublicKey == false) {
-            $(".alert-warning").show();
-        }
-        else{
-            for(j = 0; j < PatientList.length; j++) {
-                 if (publicKey == PatientList[j] ){
-                     validAgent = false;
-                }
+            if (validPublicKey == false) {
+                $(".alert-warning").show();
             }
-            for(j = 0; j < DoctorList.length; j++) {
-                 if (publicKey == DoctorList[j] ){
-                     validAgent = false;
+            else {
+                for (j = 0; j < PatientList.length; j++) {
+                    if (publicKey == PatientList[j]) {
+                        validAgent = false;
+                    }
                 }
-            }
-            for(j = 0; j < InsurerList.length; j++) {
-                 if (publicKey == InsurerList[j] ){
-                     validAgent = false;
+                for (j = 0; j < DoctorList.length; j++) {
+                    if (publicKey == DoctorList[j]) {
+                        validAgent = false;
+                    }
                 }
-            }
-            console.log(validAgent);
-            if (validAgent == true) {
-                $(".alert-warning").hide()
-                $(".alert-info").hide();   
-                
-                var ipfshash = "";
+                for (j = 0; j < InsurerList.length; j++) {
+                    if (publicKey == InsurerList[j]) {
+                        validAgent = false;
+                    }
+                }
+                console.log(validAgent);
+                if (validAgent == true) {
+                    $(".alert-warning").hide()
+                    $(".alert-info").hide();
 
-                if (designation == "0") {
-                    var reportTitle = 
-`Name: ${name}
+                    var ipfshash = "";
+
+                    if (designation == "0") {
+                        var reportTitle =
+                            `Name: ${name}
 Public Key: ${publicKey}
                             
 `;
-                    var buffer = Buffer(reportTitle);
-                    
-                    ipfs.files.add(buffer, (error, result) => {
-                        if(error){
-                            console.log(error);
-                        }else{
-                            console.log("result:"+result);
-                            ipfshash = result[0].hash;
-                            console.log("Ipfs hash:"+ipfshash);
-                            contractInstance.add_agent(name, age, designation, ipfshash, {gas: 1000000}, (err, res) => {
-                                if(!err){
-                                    location.replace("./patient.html");
-                                }else{
-                                    console.log(err);
+                        var buffer = Buffer(reportTitle);
+
+                        ipfs.files.add(buffer, (error, result) => {
+                            if (error) {
+                                console.log(error);
+                            } else {
+                                console.log("result:" + result);
+                                ipfshash = result[0].hash;
+                                console.log("Ipfs hash:" + ipfshash);
+                                contractInstance.add_agent(name, age, designation, ipfshash, { gas: 1000000 }, (err, res) => {
+                                    if (!err) {
+                                        location.replace("./patient.html");
+                                    } else {
+                                        console.log(err);
+                                    }
+
+                                })
+                            }
+                        })
+                    } else {
+                        contractInstance.add_agent(name, age, designation, ipfshash, { gas: 1000000 }, (err, res) => {
+                            if (!err) {
+                                if (designation == "1") {
+                                    location.replace("./doctor.html");
                                 }
-                                
-                            })
-                        }
-                    })
-                }else{
-                    contractInstance.add_agent(name, age, designation, ipfshash, {gas: 1000000}, (err, res) => {
-                    if (!err) {
-                        if (designation == "1") {
-                            location.replace("./doctor.html");
-                        }
-                        
-                    } else
-                        console.log(err);
-                    });
-                }              
+
+                            } else
+                                console.log(err);
+                        });
+                    }
+                }
+                else {
+                    $(".alert-info").show();
+                }
+
             }
-            else {
-                $(".alert-info").show();
-            } 
 
+            return false;
         }
-
-        return false;
-    }
-</script>
+    </script>
 
 </body>
 
